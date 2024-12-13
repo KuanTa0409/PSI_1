@@ -25,11 +25,18 @@ public class Employee {
 	@Column
 	private String name;
 	
-	@ManyToOne //多(員工)對一(部門)
+	//多(員工)對一(部門)
+	@ManyToOne 
 	@JoinColumn(name = "department_id") //由多方維護
 	private Department department; // 部門序號
 
-	@OneToMany(mappedBy = "employee") //一(員工)對多(商品)，一方放棄維護關聯關係
+	//一(員工)對多(商品)
+	@OneToMany(mappedBy = "employee") //一方放棄維護關聯關係
 	@OrderBy("id DESC") //透過員工查找商品，商品會根據 id 由大到小排序
-	private Set<Product> products = new LinkedHashSet<>();
+	private Set<Product> products = new LinkedHashSet<>(); 
+	
+	//一(員工)對多(訂單)
+	@OneToMany(mappedBy = "employee")
+	@OrderBy("id ASC")
+	private Set<Order> orders = new LinkedHashSet<>();
 }
