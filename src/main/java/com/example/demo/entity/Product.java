@@ -34,7 +34,8 @@ public class Product {
 	@Column
 	private String description; //商品描述
 	
-	@ManyToOne//多(商品)對一(員工)
+	//多(商品)對一(員工)
+	@ManyToOne
 	@JoinColumn(name = "employee_id")
 	private Employee employee; //員工序號
 	
@@ -43,5 +44,60 @@ public class Product {
 	@OrderBy("id ASC")
 	// 透過商品，查找多筆訂單明細
 	private Set<OrderItem> orderItems = new LinkedHashSet<>();
-	
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public Integer getCost() {
+		return cost;
+	}
+
+	public void setCost(Integer cost) {
+		this.cost = cost;
+	}
+
+	public Integer getPrice() {
+		return price;
+	}
+
+	public void setPrice(Integer price) {
+		this.price = price;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Employee getEmployee() {
+		return employee;
+	}
+
+	public void setEmployee(Employee employee) {
+		this.employee = employee;
+	}
+
+	public Set<OrderItem> getOrderItems() {
+		return orderItems;
+	}
+
+	public void setOrderItems(Set<OrderItem> orderItems) {
+		this.orderItems = orderItems;
+	}
 }
